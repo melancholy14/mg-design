@@ -26,12 +26,15 @@ export const Emoji = () => (
 
 export const Disabled = () => <PrimaryButton disabled>Disabled</PrimaryButton>;
 
-export const Accessible = () => (
-  <PrimaryButton>Accessible button</PrimaryButton>
+export const Outline = () => (
+  <PrimaryButton outline>Outline button</PrimaryButton>
 );
 
 export const TryAsYouWant = () => (
-  <PrimaryButton disabled={boolean('Disabled', false)}>
+  <PrimaryButton
+    disabled={boolean('Disabled', false)}
+    outline={boolean('Outline', false)}
+  >
     {text('Label', 'Try your label')}
   </PrimaryButton>
 );
