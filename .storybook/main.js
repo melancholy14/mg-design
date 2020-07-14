@@ -28,7 +28,8 @@ module.exports = {
         babelOptions: {},
         sourceLoaderOptions: null,
       }
-    }
+    },
+    '@storybook/addon-viewport/register'
   ],
   webpackFinal: async config => {
     config.module.rules.push({
