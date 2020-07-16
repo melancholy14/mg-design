@@ -1,5 +1,12 @@
 import PropTypes from 'prop-types';
 
+export enum SIZE {
+  small = 'small',
+  default = 'default',
+  medium = 'medium',
+  large = 'large',
+}
+
 export type StyledProps = {
   /** reverses the background color and the font color */
   outline?: boolean;
@@ -8,9 +15,11 @@ export type StyledProps = {
   /** makes the button look lighter */
   light?: boolean;
   /** adjust the size of the button */
-  size?: 'small' | 'default' | 'medium' | 'large';
+  size?: keyof typeof SIZE;
   /** adjust the length of the button */
   full?: boolean;
+  /** makes the font bolder */
+  bold?: boolean;
 };
 
 export type ButtonProps = StyledProps & {
@@ -27,7 +36,7 @@ export const propTypes = {
   outline: PropTypes.bool,
   rounded: PropTypes.bool,
   light: PropTypes.bool,
-  size: PropTypes.oneOf(['small', 'default', 'medium', 'large']),
+  size: PropTypes.oneOf(Object.values(SIZE)),
 };
 
 export const defaultProps = {

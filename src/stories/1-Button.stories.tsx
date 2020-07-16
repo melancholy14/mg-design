@@ -2,9 +2,10 @@ import React from 'react';
 
 import { action } from '@storybook/addon-actions';
 import { withA11y } from '@storybook/addon-a11y';
-import { withKnobs, boolean, text } from '@storybook/addon-knobs';
+import { withKnobs, boolean, text, radios } from '@storybook/addon-knobs';
 
 import Button from '../components/Buttons';
+import { SIZE } from '../components/Buttons/types';
 
 export default {
   title: 'Buttons',
@@ -12,11 +13,28 @@ export default {
   decorators: [withA11y, withKnobs],
 };
 
+const sizeOptions: {
+  [key: string]: keyof typeof SIZE;
+} = {
+  Small: 'small',
+  Default: 'default',
+  Medium: 'medium',
+  Large: 'large',
+};
+
+enum GROUP {
+  Design = 'Design',
+  Font = 'Font',
+  Label = 'Label',
+}
+
 export const TryAsYouWant = () => (
   <Button
-    disabled={boolean('Disabled', false)}
-    outline={boolean('Outline', false)}
-    light={boolean('Lighten', false)}
+    disabled={boolean('Disabled', false, GROUP.Design)}
+    outline={boolean('Outline', false, GROUP.Design)}
+    light={boolean('Lighten', false, GROUP.Design)}
+    rounded={boolean('Rounded', false, GROUP.Design)}
+    size={radios('Size', sizeOptions, sizeOptions.Default, GROUP.Font)}
     onClick={action('clicked')}
   >
     {text('Label', 'Try your label')}
@@ -25,9 +43,11 @@ export const TryAsYouWant = () => (
 
 export const withIcon = () => (
   <Button
-    disabled={boolean('Disabled', false)}
-    outline={boolean('Outline', false)}
-    light={boolean('Lighten', false)}
+    disabled={boolean('Disabled', false, GROUP.Design)}
+    outline={boolean('Outline', false, GROUP.Design)}
+    light={boolean('Lighten', false, GROUP.Design)}
+    rounded={boolean('Rounded', false, GROUP.Design)}
+    size={radios('Size', sizeOptions, sizeOptions.Default, GROUP.Font)}
     onClick={action('clicked')}
   >
     <span role="img" aria-label="so cool">
@@ -38,9 +58,11 @@ export const withIcon = () => (
 
 export const PrimaryButton = () => (
   <Button.Primary
-    disabled={boolean('Disabled', false)}
-    outline={boolean('Outline', false)}
-    light={boolean('Lighten', false)}
+    disabled={boolean('Disabled', false, GROUP.Design)}
+    outline={boolean('Outline', false, GROUP.Design)}
+    light={boolean('Lighten', false, GROUP.Design)}
+    rounded={boolean('Rounded', false, GROUP.Design)}
+    size={radios('Size', sizeOptions, sizeOptions.Default, GROUP.Font)}
     onClick={action('clicked')}
   >
     {text('Label', 'Try your label')}
