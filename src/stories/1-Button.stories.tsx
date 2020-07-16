@@ -25,7 +25,6 @@ const sizeOptions: {
 enum GROUP {
   Design = 'Design',
   Font = 'Font',
-  Label = 'Label',
 }
 
 export const TryAsYouWant = () => (
@@ -34,7 +33,9 @@ export const TryAsYouWant = () => (
     outline={boolean('Outline', false, GROUP.Design)}
     light={boolean('Lighten', false, GROUP.Design)}
     rounded={boolean('Rounded', false, GROUP.Design)}
+    full={boolean('Full Width', false, GROUP.Design)}
     size={radios('Size', sizeOptions, sizeOptions.Default, GROUP.Font)}
+    bold={boolean('Bold', false, GROUP.Font)}
     onClick={action('clicked')}
   >
     {text('Label', 'Try your label')}
@@ -47,7 +48,9 @@ export const withIcon = () => (
     outline={boolean('Outline', false, GROUP.Design)}
     light={boolean('Lighten', false, GROUP.Design)}
     rounded={boolean('Rounded', false, GROUP.Design)}
+    full={boolean('Full Width', false, GROUP.Design)}
     size={radios('Size', sizeOptions, sizeOptions.Default, GROUP.Font)}
+    bold={boolean('Bold', false, GROUP.Font)}
     onClick={action('clicked')}
   >
     <span role="img" aria-label="so cool">
@@ -62,7 +65,9 @@ export const PrimaryButton = () => (
     outline={boolean('Outline', false, GROUP.Design)}
     light={boolean('Lighten', false, GROUP.Design)}
     rounded={boolean('Rounded', false, GROUP.Design)}
+    full={boolean('Full Width', false, GROUP.Design)}
     size={radios('Size', sizeOptions, sizeOptions.Default, GROUP.Font)}
+    bold={boolean('Bold', false, GROUP.Font)}
     onClick={action('clicked')}
   >
     {text('Label', 'Try your label')}

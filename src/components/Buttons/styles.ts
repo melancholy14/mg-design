@@ -1,10 +1,12 @@
 import styled from 'styled-components';
-import { darken, lighten, invert } from 'polished';
+import { darken, lighten } from 'polished';
 
 import { StyledProps, SIZE } from './types';
 
 export const StyledButton = styled.button<StyledProps>`
+  width: ${(props) => (props.full ? '100%' : 'initial')};
   background-color: ${(props) => (props.outline ? 'white' : '')};
+
   border-radius: ${(props) => {
     if (!props.rounded) {
       return '0.2rem';
@@ -32,6 +34,9 @@ export const StyledButton = styled.button<StyledProps>`
         return '1rem';
     }
   }};
+
+  font-weight: ${(props) => (props.bold ? 'bolder' : 'initial')};
+
   padding: ${(props) => {
     switch (props.size) {
       case SIZE.small:
@@ -53,22 +58,30 @@ export const StyledButton = styled.button<StyledProps>`
 export const makeExtendedStyledButton = (
   mainColor: string,
   fontColor: string
-) => styled(StyledButton)`
-  border: 1px solid ${mainColor};
+) => {
+  const lightenColor = lighten(0.3, mainColor);
+  const lightenOutlineColor = lighten(0.1, mainColor);
+  const darkenColor = darken(0.2, mainColor);
 
-  background-color: ${(props) =>
-    props.outline
-      ? fontColor
-      : props.light
-      ? lighten(0.3, mainColor)
-      : mainColor};
-  color: ${(props) =>
-    props.outline ? mainColor : props.light ? invert(fontColor) : fontColor};
+  return styled(StyledButton)`
+    border: 1px solid ${(props) => (props.light ? lightenColor : mainColor)};
 
-  &:hover {
-    border-color: ${darken(0.2, mainColor)};
     background-color: ${(props) =>
-      props.outline ? fontColor : darken(0.2, mainColor)};
-    color: ${(props) => (props.outline ? darken(0.2, mainColor) : fontColor)};
-  }
-`;
+      props.outline ? fontColor : props.light ? lightenColor : mainColor};
+    color: ${(props) => {
+      if (props.outline && props.light) {
+        return lightenOutlineColor;
+      } else if (props.outline || props.light) {
+        return mainColor;
+      }
+
+      return fontColor;
+    }};
+
+    &:hover {
+      border-color: ${darkenColor};
+      background-color: ${(props) => (props.outline ? fontColor : darkenColor)};
+      color: ${(props) => (props.outline ? darkenColor : fontColor)};
+    }
+  `;
+};

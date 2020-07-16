@@ -37,6 +37,8 @@ export const propTypes = {
   rounded: PropTypes.bool,
   light: PropTypes.bool,
   size: PropTypes.oneOf(Object.values(SIZE)),
+  full: PropTypes.bool,
+  bold: PropTypes.bool,
 };
 
 export const defaultProps = {
@@ -46,4 +48,6 @@ export const defaultProps = {
   rounded: false,
   light: false,
   size: 'default',
+  full: false,
+  bold: false,
 };
