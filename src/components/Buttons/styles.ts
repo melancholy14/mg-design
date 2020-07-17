@@ -67,7 +67,7 @@ export const makeExtendedStyledButton = (
     border: 1px solid ${(props) => (props.light ? lightenColor : mainColor)};
 
     background-color: ${(props) =>
-      props.outline ? fontColor : props.light ? lightenColor : mainColor};
+      props.outline ? 'white' : props.light ? lightenColor : mainColor};
     color: ${(props) => {
       if (props.outline && props.light) {
         return lightenOutlineColor;
