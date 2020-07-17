@@ -73,3 +73,78 @@ export const PrimaryButton = () => (
     {text('Label', 'Try your label')}
   </Button.Primary>
 );
+
+export const SecondaryButton = () => (
+  <Button.Secondary
+    disabled={boolean('Disabled', false, GROUP.Design)}
+    outline={boolean('Outline', false, GROUP.Design)}
+    light={boolean('Lighten', false, GROUP.Design)}
+    rounded={boolean('Rounded', false, GROUP.Design)}
+    full={boolean('Full Width', false, GROUP.Design)}
+    size={radios('Size', sizeOptions, sizeOptions.Default, GROUP.Font)}
+    bold={boolean('Bold', false, GROUP.Font)}
+    onClick={action('clicked')}
+  >
+    {text('Label', 'Try your label')}
+  </Button.Secondary>
+);
+
+export const SuccessButton = () => (
+  <Button.Success
+    disabled={boolean('Disabled', false, GROUP.Design)}
+    outline={boolean('Outline', false, GROUP.Design)}
+    light={boolean('Lighten', false, GROUP.Design)}
+    rounded={boolean('Rounded', false, GROUP.Design)}
+    full={boolean('Full Width', false, GROUP.Design)}
+    size={radios('Size', sizeOptions, sizeOptions.Default, GROUP.Font)}
+    bold={boolean('Bold', false, GROUP.Font)}
+    onClick={action('clicked')}
+  >
+    {text('Label', 'Try your label')}
+  </Button.Success>
+);
+
+export const DangerButton = () => (
+  <Button.Danger
+    disabled={boolean('Disabled', false, GROUP.Design)}
+    outline={boolean('Outline', false, GROUP.Design)}
+    light={boolean('Lighten', false, GROUP.Design)}
+    rounded={boolean('Rounded', false, GROUP.Design)}
+    full={boolean('Full Width', false, GROUP.Design)}
+    size={radios('Size', sizeOptions, sizeOptions.Default, GROUP.Font)}
+    bold={boolean('Bold', false, GROUP.Font)}
+    onClick={action('clicked')}
+  >
+    {text('Label', 'Try your label')}
+  </Button.Danger>
+);
+
+export const WarningButton = () => (
+  <Button.Warning
+    disabled={boolean('Disabled', false, GROUP.Design)}
+    outline={boolean('Outline', false, GROUP.Design)}
+    light={boolean('Lighten', false, GROUP.Design)}
+    rounded={boolean('Rounded', false, GROUP.Design)}
+    full={boolean('Full Width', false, GROUP.Design)}
+    size={radios('Size', sizeOptions, sizeOptions.Default, GROUP.Font)}
+    bold={boolean('Bold', false, GROUP.Font)}
+    onClick={action('clicked')}
+  >
+    {text('Label', 'Try your label')}
+  </Button.Warning>
+);
+
+export const LinkButton = () => (
+  <Button.Link
+    disabled={boolean('Disabled', false, GROUP.Design)}
+    outline={boolean('Outline', false, GROUP.Design)}
+    light={boolean('Lighten', false, GROUP.Design)}
+    rounded={boolean('Rounded', false, GROUP.Design)}
+    full={boolean('Full Width', false, GROUP.Design)}
+    size={radios('Size', sizeOptions, sizeOptions.Default, GROUP.Font)}
+    bold={boolean('Bold', false, GROUP.Font)}
+    onClick={action('clicked')}
+  >
+    {text('Label', 'Try your label')}
+  </Button.Link>
+);
