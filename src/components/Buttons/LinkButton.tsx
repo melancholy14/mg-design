@@ -1,12 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import { ButtonProps, propTypes, defaultProps } from './types';
-import { makeExtendedStyledButton } from './styles';
+import { StyledButton } from './styles';
 
-const mainColor = 'transparent';
-const fontColor = 'darkgray';
+const bgColor = 'transparent';
+const fontColor = '#073763';
 
-const ExtendedStyledButton = makeExtendedStyledButton(mainColor, fontColor);
+const ExtendedStyledButton = styled(StyledButton)`
+  color: ${fontColor};
+  background: ${bgColor};
+  border: 0px solid ${bgColor};
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
 function LinkButton({ children, ...props }: ButtonProps) {
   return <ExtendedStyledButton {...props}>{children}</ExtendedStyledButton>;

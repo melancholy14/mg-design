@@ -56,23 +56,22 @@ export const StyledButton = styled.button<StyledProps>`
 `;
 
 export const makeExtendedStyledButton = (
-  mainColor: string,
-  fontColor: string
+  bgColor: string,
+  fontColor: string,
+  darkenColor = darken(0.2, bgColor),
+  lightenColor = lighten(0.5, bgColor),
+  lightenOutlineColor = lighten(0.1, bgColor)
 ) => {
-  const lightenColor = lighten(0.3, mainColor);
-  const lightenOutlineColor = lighten(0.1, mainColor);
-  const darkenColor = darken(0.2, mainColor);
-
   return styled(StyledButton)`
-    border: 1px solid ${(props) => (props.light ? lightenColor : mainColor)};
+    border: 1px solid ${(props) => (props.light ? lightenColor : bgColor)};
 
     background-color: ${(props) =>
-      props.outline ? 'white' : props.light ? lightenColor : mainColor};
+      props.outline ? 'white' : props.light ? lightenColor : bgColor};
     color: ${(props) => {
       if (props.outline && props.light) {
         return lightenOutlineColor;
       } else if (props.outline || props.light) {
-        return mainColor;
+        return bgColor;
       }
 
       return fontColor;

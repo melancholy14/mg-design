@@ -3,10 +3,10 @@ import React from 'react';
 import { ButtonProps, propTypes, defaultProps } from './types';
 import { makeExtendedStyledButton } from './styles';
 
-const mainColor = 'royalblue';
-const fontColor = 'white';
+const bgColor = '#27557E';
+const fontColor = '#FFFFFF';
 
-const ExtendedStyledButton = makeExtendedStyledButton(mainColor, fontColor);
+const ExtendedStyledButton = makeExtendedStyledButton(bgColor, fontColor);
 
 function PrimaryButton({ children, ...props }: ButtonProps) {
   return <ExtendedStyledButton {...props}>{children}</ExtendedStyledButton>;
