@@ -63,13 +63,16 @@ export const makeExtendedStyledButton = (
   darkenColor = darken(0.05, bgColor),
   lightenColor = lighten(0.6, bgColor)
 ) => {
+  const basicStyles = (light?: boolean, outline?: boolean) => `
+    border: 1px solid ${light ? lightenColor : bgColor};
+
+    background-color: ${outline ? WHITE : light ? lightenColor : bgColor};
+
+    color: ${outline || light ? bgColor : fontColor};
+  `;
+
   return styled(StyledButton)`
-    border: 1px solid ${(props) => (props.light ? lightenColor : bgColor)};
-
-    background-color: ${(props) =>
-      props.outline ? WHITE : props.light ? lightenColor : bgColor};
-
-    color: ${(props) => (props.outline || props.light ? bgColor : fontColor)};
+    ${(props) => basicStyles(props.light, props.outline)}
 
     &:hover {
       border-color: ${darkenColor};
@@ -85,6 +88,10 @@ export const makeExtendedStyledButton = (
 
       color: ${(props) =>
         props.outline || props.light ? darkenColor : fontColor};
+    }
+
+    &:disabled {
+      ${(props) => basicStyles(props.light, props.outline)}
     }
   `;
 };
