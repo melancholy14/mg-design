@@ -3,9 +3,11 @@ import { darken, lighten } from 'polished';
 
 import { StyledProps, SIZE } from './types';
 
+export const WHITE = '#FFFFFF';
+
 export const StyledButton = styled.button<StyledProps>`
   width: ${(props) => (props.full ? '100%' : 'initial')};
-  background-color: ${(props) => (props.outline ? 'white' : '')};
+  background-color: ${(props) => (props.outline ? WHITE : '')};
 
   border-radius: ${(props) => {
     if (!props.rounded) {
@@ -58,29 +60,31 @@ export const StyledButton = styled.button<StyledProps>`
 export const makeExtendedStyledButton = (
   bgColor: string,
   fontColor: string,
-  darkenColor = darken(0.2, bgColor),
-  lightenColor = lighten(0.5, bgColor),
-  lightenOutlineColor = lighten(0.1, bgColor)
+  darkenColor = darken(0.05, bgColor),
+  lightenColor = lighten(0.6, bgColor)
 ) => {
   return styled(StyledButton)`
     border: 1px solid ${(props) => (props.light ? lightenColor : bgColor)};
 
     background-color: ${(props) =>
-      props.outline ? 'white' : props.light ? lightenColor : bgColor};
-    color: ${(props) => {
-      if (props.outline && props.light) {
-        return lightenOutlineColor;
-      } else if (props.outline || props.light) {
-        return bgColor;
-      }
+      props.outline ? WHITE : props.light ? lightenColor : bgColor};
 
-      return fontColor;
-    }};
+    color: ${(props) => (props.outline || props.light ? bgColor : fontColor)};
 
     &:hover {
       border-color: ${darkenColor};
-      background-color: ${(props) => (props.outline ? fontColor : darkenColor)};
-      color: ${(props) => (props.outline ? darkenColor : fontColor)};
+
+      background-color: ${(props) => {
+        if (props.outline) {
+          return fontColor;
+        } else if (props.light) {
+          return lighten(0.4, darkenColor);
+        }
+        return darkenColor;
+      }};
+
+      color: ${(props) =>
+        props.outline || props.light ? darkenColor : fontColor};
     }
   `;
 };
