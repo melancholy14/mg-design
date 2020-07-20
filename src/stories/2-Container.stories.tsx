@@ -3,7 +3,7 @@ import React from 'react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 
-import Container from '../components/Container';
+import { Container } from '../layout';
 
 export default {
   title: 'Container',

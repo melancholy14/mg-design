@@ -4,8 +4,8 @@ import { action } from '@storybook/addon-actions';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs, boolean, text, radios } from '@storybook/addon-knobs';
 
-import Button from '../components/Buttons';
-import { SIZE } from '../components/Buttons/types';
+import { Button } from '../elements';
+import { SIZE } from '../elements/Buttons/types';
 
 export default {
   title: 'Buttons',
