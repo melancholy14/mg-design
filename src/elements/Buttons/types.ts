@@ -18,7 +18,7 @@ export type StyledProps = {
   size?: keyof typeof SIZE;
   /** adjust the length of the button */
   full?: boolean;
-  /** makes the font bolder */
+  /** makes the text bolder */
   bold?: boolean;
 };
 
