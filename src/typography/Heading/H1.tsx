@@ -4,7 +4,7 @@ import { propTypes, defaultProps, HeadingProps } from './types';
 
 import { StyledHeading } from './styles';
 
-function EnormousHeading({ bold, children }: HeadingProps) {
+function H1({ bold, children }: HeadingProps) {
   return (
     <StyledHeading as="h1" size="3rem" bold={bold}>
       {children}
@@ -12,8 +12,8 @@ function EnormousHeading({ bold, children }: HeadingProps) {
   );
 }
 
-EnormousHeading.propTypes = propTypes;
+H1.propTypes = propTypes;
 
-EnormousHeading.defaultProps = defaultProps;
+H1.defaultProps = defaultProps;
 
-export default EnormousHeading;
+export default H1;
