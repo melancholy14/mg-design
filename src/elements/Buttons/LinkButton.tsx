@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { TRANSPARENT, INDIGO } from 'common/colors';
+
 import { ButtonProps, propTypes, defaultProps } from './types';
 import { StyledButton } from './styles';
 
-const bgColor = 'transparent';
-const fontColor = '#073763';
+const bgColor = TRANSPARENT;
+const fontColor = INDIGO;
 
 const ExtendedStyledButton = styled(StyledButton)`
   color: ${fontColor};

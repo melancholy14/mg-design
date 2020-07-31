@@ -1,9 +1,11 @@
 import React from 'react';
 
-import { ButtonProps, propTypes, defaultProps } from './types';
-import { makeExtendedStyledButton, WHITE } from './styles';
+import { COLORS, WHITE } from 'common/colors';
 
-const bgColor = '#38761D';
+import { ButtonProps, propTypes, defaultProps } from './types';
+import { makeExtendedStyledButton } from './styles';
+
+const bgColor = COLORS.SUCCESS;
 const fontColor = WHITE;
 
 const ExtendedStyledButton = makeExtendedStyledButton(bgColor, fontColor);
