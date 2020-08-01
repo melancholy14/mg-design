@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { TRANSPARENT, INDIGO } from 'common/colors';
+import { TRANSPARENT, INDIGO } from '../../common/colors';
 
 import { ButtonProps, propTypes, defaultProps } from './types';
 import { StyledButton } from './styles';

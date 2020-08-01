@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { darken, lighten } from 'polished';
 
-import { WHITE } from 'common/colors';
+import { WHITE } from '../../common/colors';
+import { SIZE } from '../../common/sizes';
 
-import { StyledProps, SIZE } from './types';
+import { StyledProps } from './types';
 
 export const StyledButton = styled.button<StyledProps>`
   width: ${(props) => (props.full ? '100%' : 'initial')};

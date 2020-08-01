@@ -13,10 +13,10 @@ export const BROWN = '#826F35';
 
 export const TRANSPARENT = 'transparent';
 
-export const COLORS = {
-  PRIMARY: BLUE,
-  DANGER: RED,
-  WARNING: BROWN,
-  SECONDARY: GRAY,
-  SUCCESS: GREEN,
-};
+export enum COLORS {
+  primary = '#27557E',
+  secondary = '#565E64',
+  success = '#38761D',
+  danger = '#990000',
+  warning = '#826F35',
+}

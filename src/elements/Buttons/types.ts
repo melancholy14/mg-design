@@ -1,11 +1,6 @@
 import PropTypes from 'prop-types';
 
-export enum SIZE {
-  small = 'small',
-  default = 'default',
-  medium = 'medium',
-  large = 'large',
-}
+import { SIZE } from '../../common/sizes';
 
 export type StyledProps = {
   /** reverses the background color and the font color */
