@@ -6,6 +6,7 @@ export const INDIGO = '#073763';
 export const GRAY = '#565E64';
 
 export const WHITE = '#FFFFFF';
+export const BLACK = '#000000';
 
 export const GREEN = '#38761D';
 

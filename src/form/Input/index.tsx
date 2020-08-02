@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
-import { COLORS } from '../../common/colors';
+import styled from 'styled-components';
+import { lighten } from 'polished';
+
+import { COLORS, BLACK, GRAY } from '../../common/colors';
 import { SIZE } from '../../common/sizes';
 import { STYLES } from '../../common/styles';
 
@@ -21,7 +23,6 @@ type StyledInputProps = {
 
 const StyledInput = styled.input<StyledInputProps>`
   width: ${(props) => (props.full ? '100%' : 'auto')};
-  /* height: 2rem; */
 
   border: 1px solid
     ${(props) => {
@@ -83,6 +84,22 @@ const StyledInput = styled.input<StyledInputProps>`
         return '0.5rem 1rem';
     }
   }};
+
+  &:placeholder {
+    color: ${lighten(0.5, BLACK)};
+  }
+
+  &:disabled {
+    background-color: ${(props) => {
+      const color = props.inputStyle ? COLORS[props.inputStyle] : BLACK;
+
+      return lighten(0.5, color || GRAY);
+    }};
+  }
+
+  &:focus {
+
+  }
 `;
 
 type InputProps = StyledInputProps & {
