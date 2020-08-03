@@ -35,6 +35,15 @@ const styleOptions: {
   Default: 'default',
 };
 
+const locationOptions: {
+  [key: string]: 'up' | 'down' | 'left' | 'right';
+} = {
+  Left: 'left',
+  Up: 'up',
+  Right: 'right',
+  Down: 'down',
+};
+
 enum GROUP {
   Design = 'Design',
   Font = 'Font',
@@ -54,8 +63,14 @@ export const TryAsYouWant = () => (
     )}
     bold={boolean('Bold', false, GROUP.Font)}
     onChange={action('changed')}
-    value={text('Label', '')}
+    value={text('Text', '')}
     placeholder="Fill in `Other > Label`"
+    label={text('Label', 'Try As You Want')}
+    labelLocation={radios(
+      'Label Location',
+      locationOptions,
+      locationOptions.Left
+    )}
   />
 );
 
@@ -74,5 +89,11 @@ export const withIcon = () => (
     bold={boolean('Bold', false, GROUP.Font)}
     onChange={action('changed')}
     value="😀 😎 👍 💯"
+    label="with Icon"
+    labelLocation={radios(
+      'Label Location',
+      locationOptions,
+      locationOptions.Left
+    )}
   />
 );

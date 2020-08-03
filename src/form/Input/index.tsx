@@ -98,35 +98,90 @@ const StyledInput = styled.input<StyledInputProps>`
   }
 
   &:focus {
+    box-shadow: 0.1rem 0.1rem 0.2rem 0.1rem
+      ${(props) => {
+        switch (props.inputStyle) {
+          case STYLES.primary:
+            return COLORS.primary;
+          case STYLES.secondary:
+            return COLORS.secondary;
+          case STYLES.success:
+            return COLORS.success;
+          case STYLES.danger:
+            return COLORS.danger;
+          case STYLES.warning:
+            return COLORS.warning;
+          default:
+            return 'currentColor';
+        }
+      }};
 
+    outline: none;
   }
 `;
 
-type InputProps = StyledInputProps & {
-  /** makes the button inactive */
-  disabled?: boolean;
-  value?: string | number;
-  placeholder?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+type WrapperProps = {
+  /** sets the location of the label */
+  labelLocation?: 'up' | 'left' | 'right' | 'down';
 };
 
-function Input({ ...props }: InputProps) {
-  return <StyledInput {...props} />;
+const Wrapper = styled.label<WrapperProps>`
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+
+  flex-direction: ${(props) =>
+    props.labelLocation === 'up' || props.labelLocation === 'down'
+      ? 'column'
+      : 'row'};
+
+  & > span {
+    ${(props) => {
+      switch (props.labelLocation) {
+        case 'left': {
+          return 'margin-right: 0.5rm';
+        }
+        case 'up': {
+          return 'margin-bottom: 0.5rem';
+        }
+        default:
+          return '';
+      }
+    }}
+  }
+`;
+
+type InputProps = StyledInputProps &
+  WrapperProps & {
+    /** makes the button inactive */
+    disabled?: boolean;
+    value?: string | number;
+    placeholder?: string;
+    id?: string;
+    /** the label text for the input tag */
+    label?: string;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  };
+
+function Input({ id, label, labelLocation, ...props }: InputProps) {
+  return (
+    <Wrapper htmlFor={id} labelLocation={labelLocation}>
+      <span>{label}</span>
+      <StyledInput {...props} id={id} />
+    </Wrapper>
+  );
 }
 
 Input.propTypes = {
   inputStyle: PropTypes.oneOf(Object.values(STYLES)),
-  /** makes the button look rounded */
   rounded: PropTypes.bool,
-  /** adjust the size of the button */
   extent: PropTypes.oneOf(Object.values(SIZE)),
-  /** adjust the length of the button */
   full: PropTypes.bool,
-  /** makes the text bolder */
   bold: PropTypes.bool,
-  /** makes the button inactive */
   disabled: PropTypes.bool,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  label: PropTypes.string,
+  labelLocation: PropTypes.oneOf(['up', 'left', 'right', 'down']),
 };
 
 Input.defaultProps = {
@@ -137,6 +192,8 @@ Input.defaultProps = {
   full: false,
   bold: false,
   onChange: undefined,
+  label: '',
+  labelLocation: 'left',
 };
 
 export default Input;
