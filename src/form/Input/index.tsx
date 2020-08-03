@@ -131,24 +131,38 @@ const Wrapper = styled.label<WrapperProps>`
   display: flex;
   align-items: center;
 
-  flex-direction: ${(props) =>
-    props.labelLocation === 'up' || props.labelLocation === 'down'
-      ? 'column'
-      : 'row'};
+  flex-direction: ${(props) => {
+    switch (props.labelLocation) {
+      case 'left':
+        return 'row';
+      case 'up':
+        return 'column';
+      case 'right':
+        return 'row-reverse';
+      case 'down':
+        return 'column-reverse';
+      default:
+        return '';
+    }
+  }};
 
   & > span {
+    width: 100%;
+
     ${(props) => {
       switch (props.labelLocation) {
-        case 'left': {
-          return 'margin-right: 0.5rm';
-        }
-        case 'up': {
+        case 'left':
+          return 'margin-right: 0.5rem';
+        case 'up':
           return 'margin-bottom: 0.5rem';
-        }
+        case 'down':
+          return 'margin-top: 0.5rem';
+        case 'right':
+          return 'margin-left: 0.5rem';
         default:
           return '';
       }
-    }}
+    }};
   }
 `;
 
