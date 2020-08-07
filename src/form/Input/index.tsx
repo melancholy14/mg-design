@@ -7,6 +7,7 @@ import { lighten } from 'polished';
 import { COLORS, BLACK, GRAY } from '../../common/colors';
 import { SIZE } from '../../common/sizes';
 import { STYLES } from '../../common/styles';
+import { makeFontSize } from 'common/utils';
 
 type StyledInputProps = {
   /** set the border color depending on the type */
@@ -57,18 +58,7 @@ const StyledInput = styled.input<StyledInputProps>`
     }
   }};
 
-  font-size: ${(props) => {
-    switch (props.extent) {
-      case SIZE.small:
-        return '0.85rem';
-      case SIZE.medium:
-        return '1.25rem';
-      case SIZE.large:
-        return '1.5rem';
-      default:
-        return '1rem';
-    }
-  }};
+  font-size: ${(props) => makeFontSize(props.extent)};
 
   font-weight: ${(props) => (props.bold ? 'bolder' : 'initial')};
 
