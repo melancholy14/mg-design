@@ -36,12 +36,10 @@ const styleOptions: {
 };
 
 const locationOptions: {
-  [key: string]: 'up' | 'down' | 'left' | 'right';
+  [key: string]: 'up' | 'left';
 } = {
   Left: 'left',
   Up: 'up',
-  Right: 'right',
-  Down: 'down',
 };
 
 enum GROUP {
@@ -69,7 +67,7 @@ export const TryAsYouWant = () => (
     labelLocation={radios(
       'Label Location',
       locationOptions,
-      locationOptions.Left
+      locationOptions.Up
     )}
   />
 );
@@ -93,7 +91,7 @@ export const withIcon = () => (
     labelLocation={radios(
       'Label Location',
       locationOptions,
-      locationOptions.Left
+      locationOptions.Up
     )}
   />
 );

@@ -1,4 +1,6 @@
 import { SIZE } from './sizes';
+import { COLORS, BLACK } from './colors';
+import { STYLES } from './styles';
 
 export const makeFontSizeBySize = (size?: string) => {
   switch (size) {
@@ -23,5 +25,22 @@ export const makePaddingBySize = (size?: string) => {
       return '0.8rem 1.6rem';
     default:
       return '0.5rem 1rem';
+  }
+};
+
+export const makeColorByStyle = (style?: string) => {
+  switch (style) {
+    case STYLES.primary:
+      return COLORS.primary;
+    case STYLES.secondary:
+      return COLORS.secondary;
+    case STYLES.success:
+      return COLORS.success;
+    case STYLES.danger:
+      return COLORS.danger;
+    case STYLES.warning:
+      return COLORS.warning;
+    default:
+      return BLACK;
   }
 };
