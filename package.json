@@ -14,9 +14,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/react-icons": "^3.0.0",
     "@types/styled-components": "^5.1.1",
     "polished": "^3.6.5",
     "prop-types": "^15.7.2",
+    "react-icons": "^3.11.0",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
