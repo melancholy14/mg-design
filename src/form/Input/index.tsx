@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { SIZE } from '../../common/sizes';
@@ -7,11 +7,29 @@ import { STYLES } from '../../common/styles';
 import { InputProps } from './types';
 import { Wrapper, StyledInput } from './styles';
 
-function Input({ id, label, labelLocation, ...props }: InputProps) {
+function Input({
+  id,
+  label,
+  labelLocation,
+  icon,
+  children,
+  ...props
+}: InputProps) {
+  const [focused, setFocused] = useState<boolean>(false);
+
   return (
     <Wrapper htmlFor={id} labelLocation={labelLocation}>
       <span>{label}</span>
-      <StyledInput {...props} id={id} />
+      <StyledInput {...props} icon={icon} focused={focused}>
+        {icon === 'left' && children && <div>{children}</div>}
+        <input
+          {...props}
+          id={id}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+        />
+        {icon === 'right' && children && <div>{children}</div>}
+      </StyledInput>
     </Wrapper>
   );
 }
@@ -25,6 +43,7 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   label: PropTypes.string,
   labelLocation: PropTypes.oneOf(['up', 'left']),
+  icon: PropTypes.oneOf(['left', 'right']),
 };
 
 Input.defaultProps = {
@@ -37,6 +56,7 @@ Input.defaultProps = {
   onChange: undefined,
   label: '',
   labelLocation: 'left',
+  icon: 'left',
 };
 
 export default Input;

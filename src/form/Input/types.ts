@@ -2,16 +2,19 @@ import { STYLES } from '../../common/styles';
 import { SIZE } from '../../common/sizes';
 
 export type StyledInputProps = {
-  /** set the border color depending on the type */
+  /** sets the border color depending on the type */
   inputStyle?: keyof typeof STYLES;
   /** makes the input look rounded */
   rounded?: boolean;
-  /** adjust the size of the input, used `extent` to avoid conflicting to the default `size` tag */
+  /** adjusts the size of the input, used `extent` to avoid conflicting to the default `size` tag */
   extent?: keyof typeof SIZE;
   /** makes the input have a full width */
   full?: boolean;
   /** makes the text bolder */
   bold?: boolean;
+  /** decides where the icon is */
+  icon?: 'left' | 'right';
+  children?: React.ReactNode;
 };
 
 export type WrapperProps = {
